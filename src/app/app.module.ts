@@ -9,6 +9,8 @@ import { ProblemdefinitionComponent } from './problemdefinition/problemdefinitio
 import { PtpComponent } from './ptp/ptp.component';
 import { ActionsComponent } from './actions/actions.component';
 
+import {AtomSpinnerModule} from 'angular-epic-spinners';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,8 @@ import { ActionsComponent } from './actions/actions.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AtomSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
