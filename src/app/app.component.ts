@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'accplan';
+  firstname = 'accplan';
+  addressline = 'sample address';
+  telnumber = 'Sample telnumber';
+
+  showLoadingIndicator = true;
 }

@@ -1,5 +1,12 @@
 <!--The content below is only a placeholder and can be replaced. col-md-offset-1 -->
-
+<div *ngIf="showLoadingIndicator" class="spinner">Loadng</div>
+<div class="card text-center" style="width: 100%">
+  <div class="card-body">
+    <h5 class="card-title">{{firstname}}</h5>
+    <p class="card-text">{{addressline}}</p>
+    <p class="card-text">{{telnumber}}</p>
+  </div>
+</div>
 <div class="body">
       <div class="row">
           <div class="col-md-12">
@@ -9,6 +16,7 @@
                       <li role="presentation" class="active"><a href="#facilities" aria-controls="home" role="tab" data-toggle="tab">Facilities</a></li>
                       <li role="presentation"><a href="#background" aria-controls="profile" role="tab" data-toggle="tab">Background</a></li>
                       <li role="presentation"><a href="#problemdefinition" aria-controls="messages" role="tab" data-toggle="tab">Problem Definition</a></li>
+                      <!--<li role="presentation"><a href="#" routerLink="problemdefinition" role="tab" data-toggle="tab">Problem Definition</a></li>-->
                       <li role="presentation"><a href="#swot" aria-controls="messages" role="tab" data-toggle="tab">SWOT</a></li>
                       <li role="presentation"><a href="#abilitytopay" aria-controls="profile" role="tab" data-toggle="tab">Ability to pay</a></li>
                       <li role="presentation"><a href="#customerproposal" aria-controls="messages" role="tab" data-toggle="tab">Customer proposal</a></li>
@@ -22,7 +30,7 @@
                       <div role="tabpanel" class="tab-pane fade in active" id="facilities">
                           <h3>Facilities</h3>
                           <app-facilities></app-facilities>
-                          </div>
+                      </div>
                       <div role="tabpanel" class="tab-pane fade" id="background">
                           <h3>Background</h3>
                           <hr>

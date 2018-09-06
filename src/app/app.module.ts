@@ -5,12 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BackgroundComponent } from './background/background.component';
 import { FacilitiesComponent } from './facilities/facilities.component';
+import { ProblemdefinitionComponent } from './problemdefinition/problemdefinition.component';
+import { PtpComponent } from './ptp/ptp.component';
+import { ActionsComponent } from './actions/actions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BackgroundComponent,
-    FacilitiesComponent
+    FacilitiesComponent,
+    ProblemdefinitionComponent,
+    PtpComponent,
+    ActionsComponent
   ],
   imports: [
     BrowserModule,
