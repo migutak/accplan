@@ -14,11 +14,11 @@ const acc = localStorage.getItem('accnumber');
 const username = localStorage.getItem('username');
 
 @Component({
-  selector: 'app-background',
-  templateUrl: './background.component.html',
-  styleUrls: ['./background.component.css']
+  selector: 'app-customerproposal',
+  templateUrl: './customerproposal.component.html',
+  styleUrls: ['./customerproposal.component.css']
 })
-export class BackgroundComponent implements OnInit {
+export class CustomerproposalComponent implements OnInit {
 
   constructor(private httpClient: HttpClient, private accplanService: AccplanService) { }
 
@@ -34,10 +34,10 @@ export class BackgroundComponent implements OnInit {
     filetype: null
   };
 
-  backgroundFiles: any;
-  backgroundhistory: any;
-  backgroundFileslength: number;
-  backgroundhistorylength: number;
+  customerproposalFiles: any;
+  customerproposalhis: any;
+  customerproposalFileslength: number;
+  customerproposalhislength: number;
   model: any = {};
 
   public uploader: FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
@@ -59,7 +59,7 @@ export class BackgroundComponent implements OnInit {
          this.fileuploaded.custnumber = cust;
          this.fileuploaded.accnumber = acc;
          this.fileuploaded.colofficer = username;
-         this.fileuploaded.doctype = 'accplan_background_file';
+         this.fileuploaded.doctype = 'accplan_customerproposal_file';
          //
          this.accplanService.saveuploadtodb(this.fileuploaded).subscribe(data => {
            // console.log(data);
@@ -67,15 +67,15 @@ export class BackgroundComponent implements OnInit {
            this.getUploads();
          }, error => {
            console.log(error);
-           swal('Error!', this.fileuploaded.filename + ' NOT received!', 'error');
+           swal('Error!', this.fileuploaded.filename + ' not received!', 'error');
          });
       };
   }
 
   getUploads() {
-    this.httpClient.get(environment.ecol_apis_host + '/api/status/files/' + cust + '/accplan_background_file').subscribe(data => {
-      this.backgroundFiles = data;
-      this.backgroundFileslength = this.backgroundFiles.length;
+    this.httpClient.get(environment.ecol_apis_host + '/api/status/files/' + cust + '/accplan_customerproposal_file').subscribe(data => {
+      this.customerproposalFiles = data;
+      this.customerproposalFileslength = this.customerproposalFiles.length;
      // console.log(data);
     }, error => {
       console.log(error);
@@ -83,9 +83,9 @@ export class BackgroundComponent implements OnInit {
   }
 
   getNotes() {
-    this.accplanService.getBackground(cust).subscribe(data => {
-      this.backgroundhistory = data;
-      this.backgroundhistorylength = this.backgroundhistory.length;
+    this.accplanService.getCustomerproposal(cust).subscribe(data => {
+      this.customerproposalhis = data;
+      this.customerproposalhislength = this.customerproposalhis.length;
     }, error => {
       console.log(error);
     });
@@ -101,18 +101,18 @@ export class BackgroundComponent implements OnInit {
   }
 
   onSubmit(form) {
-    // console.log(form.value);
     const body = {
       planid: cust,
       accnumber: acc,
       custnumber: cust,
-      background: form.value.backgroundcomment,
+      customerproposal: form.value.customerproposalcomment,
       owner: username
     };
 
-    this.accplanService.submitBackground(body).subscribe(data => {
+    this.accplanService.submitCustomerproposal(body).subscribe(data => {
+      console.log(data);
       swal('Successful!', 'saved successfully!', 'success');
-      this.model.backgroundcomment = '';
+      this.model.customerproposalcomment = '';
       this.getNotes();
     }, error => {
       console.log(error);

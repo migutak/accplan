@@ -10,5 +10,29 @@
 </head>
 <body>
   <app-root></app-root>
+
+  <script>
+      var custnumber = getParameterByName('custnumber');
+      var accnumber = getParameterByName('accnumber');
+      var gusername = getParameterByName('username');
+
+      function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
+
+      console.log('global username _in ===', gusername);
+      console.log('global accnumber _in ===', accnumber);
+      console.log('global custnumber _in ===', custnumber);
+
+      localStorage.setItem('username', gusername);
+      localStorage.setItem('accnumber', accnumber);
+      localStorage.setItem('custnumber', custnumber);
+  </script>
 </body>
 </html>

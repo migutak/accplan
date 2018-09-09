@@ -15,11 +15,11 @@ const acc = localStorage.getItem('accnumber');
 const username = localStorage.getItem('username');
 
 @Component({
-  selector: 'app-actions',
-  templateUrl: './actions.component.html',
-  styleUrls: ['./actions.component.css']
+  selector: 'app-collections',
+  templateUrl: './collections.component.html',
+  styleUrls: ['./collections.component.css']
 })
-export class ActionsComponent implements OnInit {
+export class CollectionsComponent implements OnInit {
 
   constructor() { }
 

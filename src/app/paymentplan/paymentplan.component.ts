@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 import swal from 'sweetalert';
-import { saveAs} from 'file-saver';
 import { AccplanService } from '../accplan.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -15,13 +14,26 @@ const acc = localStorage.getItem('accnumber');
 const username = localStorage.getItem('username');
 
 @Component({
-  selector: 'app-actions',
-  templateUrl: './actions.component.html',
-  styleUrls: ['./actions.component.css']
+  selector: 'app-paymentplan',
+  templateUrl: './paymentplan.component.html',
+  styleUrls: ['./paymentplan.component.css']
 })
-export class ActionsComponent implements OnInit {
+export class PaymentplanComponent implements OnInit {
 
-  constructor() { }
+  minDate: Date;
+  maxDate: Date;
+
+  ptps: any;
+  model: any = {
+    planfreq: null
+  };
+
+  constructor() {
+    this.minDate = new Date();
+    this.maxDate = new Date();
+    this.minDate.setDate(this.minDate.getDate());
+    this.maxDate.setDate(this.maxDate.getDate() + 7);
+  }
 
   ngOnInit() {
   }

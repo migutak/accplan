@@ -4,40 +4,44 @@
     <tr>
       <th>accnumber</th>
       <th>custnumber</th>
-      <th>name</th>
+      <th>productcode</th>
       <th>arocode</th>
-      <th>branch</th>
       <th>balance</th>
       <th>colofficer</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>John</td>
-      <td>Doe</td>
-      <td>john@example.com</td>
+    <tr *ngFor="let f of facilitiesList">
+      <td>{{f.ACCNUMBER}}</td>
+      <td>{{f.CUSTNUMBER}}</td>
+      <td>{{f.PRODUCTCODE}}</td>
+      <td>{{f.AROCODE}}</td>
+      <td>{{f.OUTSBALANCE}}</td>
+      <td>{{f.COLOFFICER}}</td>
     </tr>
   </tbody>
 </table>
 <hr>
-<p>credit cards</p>
+<p>Credit cards</p>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>accnumber</th>
-      <th>custnumber</th>
-      <th>name</th>
-      <th>arocode</th>
-      <th>branch</th>
-      <th>balance</th>
-      <th>colofficer</th>
+      <th>acount no</th>
+      <th>card acct</th>
+      <th>card name</th>
+      <th>cycle</th>
+      <th>outbalance</th>
+      <th>age in months</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>John</td>
-      <td>Doe</td>
-      <td>john@example.com</td>
+    <tr *ngFor="let c of creditcrdList">
+      <td>{{c.ACCOUNTNO}}</td>
+      <td>{{c.CARDACCT}}</td>
+      <td>{{c.CARDNAME}}</td>
+      <td>{{c.CYCLE}}</td>
+      <td>{{c.OUTBALANCE}}</td>
+      <td>{{c.AGEINMONTHS}}</td>
     </tr>
   </tbody>
 </table>
@@ -46,20 +50,20 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>accnumber</th>
-      <th>custnumber</th>
-      <th>name</th>
+      <th>loanaccnumber</th>
+      <th>phonenumber</th>
+      <th>loan type</th>
+      <th>loan amount</th>
       <th>arocode</th>
-      <th>branch</th>
-      <th>balance</th>
-      <th>colofficer</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>John</td>
-      <td>Doe</td>
-      <td>john@example.com</td>
+    <tr *ngFor="let m of mcoopcashList">
+      <td>{{m.ACCNUMBER}}</td>
+      <td>{{m.CUSTNUMBER}}</td>
+      <td>{{m.PRODUCTCODE}}</td>
+      <td>{{m.OUSTBALANCE}}</td>
+      <td>{{m.AROCODE}}</td>
     </tr>
   </tbody>
 </table>

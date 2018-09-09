@@ -1,3 +1,159 @@
-<p>
-  actions works!
-</p>
+<div class="panel panel-info">
+  <div class="panel-heading">
+          <h3 class="panel-title">Actions agreed</h3>
+      </div>
+      <div class="panel-body" style="height:600px">
+          <form>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Customer proposal Received</label>
+          <div class="col-sm-2">
+            Initiation Date <input type="text" class="form-control form_date2" id="initiationdateProposal" name="initiationdateProposal" ng-disabled="stateCheck" /> 
+          </div>
+          <div class="col-sm-2">
+            Next Review <input type="text" class="form-control form_date" id="reviewProposal" name="reviewProposal" ng-disabled="stateCheck" /> 
+          </div>
+          <div class="col-sm-2">
+            Attachment: <span><input type="file"></span>
+          </div>
+          <div class="col-sm-2">
+            Remark: <textarea class="form-control" rows="2" id="remarkproposal" name="remarkproposal" ng-disabled="stateCheck"></textarea>
+          </div>
+          <div class="col-sm-1">
+            Completed: 
+            <select id="action_completed" ng-disabled="stateCheck">
+          <option value="N">No</option>
+              <option value="Y">Yes</option>
+          </select>
+          </div>
+          <div class="col-sm-1">
+            <button type="button" class="btn btn-sm btn-info" id="btn_proposalreceived" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing ..." ng-disabled="stateCheck">update</button>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Internal approval sought</label>
+          <div class="col-sm-2">
+            Initiation Date <input type="text" class="form-control form_date2" id="initiationdateapprovalsort" name="initiationdateapprovalsort" ng-disabled="stateCheckapprovalsort" /> 
+          </div>
+          <div class="col-sm-2">
+            Next Review <input type="text" class="form-control form_date" id="reviewedinternalApprovalSort" name="reviewedinternalApprovalSort" ng-disabled="stateCheckapprovalsort" /> 
+          </div>
+          <div class="col-sm-2">
+            Attachment: <span><input type="file" ng-disabled="stateCheckapprovalsort" /></span>
+          </div>
+          <div class="col-sm-2">
+            Remark: <textarea class="form-control" rows="2" id="remarkapprovalsought" name="remarkapprovalsought" ng-disabled="stateCheckapprovalsort"></textarea>
+          </div>
+          <div class="col-sm-1">
+            Completed: 
+            <select id="action_completed_approvalsought" ng-disabled="stateCheckapprovalsort">
+          <option value="N">No</option>
+              <option value="Y">Yes</option>
+          </select>
+          </div>
+          <div class="col-sm-1">
+            <button type="button" class="btn btn-sm btn-info" id="btn_approvalsought" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing ..." ng-disabled="stateCheckapprovalsort">update</button>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Internal Approval granted</label>
+          <div class="col-sm-2">
+            Initiation Date <input type="text" class="form-control form_date2" id="initiationdateapprovalgranted" name="initiationdateapprovalgranted" ng-disabled="stateCheckapprovalgranted" /> 
+          </div>
+          <div class="col-sm-2">
+            Next Review <input type="text" class="form-control form_date" id="reviewedinternalApprovalgranted" name="reviewedinternalApprovalgranted" ng-disabled="stateCheckapprovalgranted" /> 
+          </div>
+          <div class="col-sm-2">
+            Attachment: <span><input type="file" ng-disabled="stateCheckapprovalgranted" ></span>
+          </div>
+          <div class="col-sm-2">
+            Remark: <textarea class="form-control" rows="2" id="remarkapprovalgranted" name="remarkapprovalgranted" ng-disabled="stateCheckapprovalgranted" ></textarea>
+          </div>
+          <div class="col-sm-1">
+            Completed: 
+            <select id="action_completed_approvalgranted" ng-disabled="stateCheckapprovalgranted" >
+          <option value="N">No</option>
+              <option value="Y">Yes</option>
+          </select>
+          </div>
+          <div class="col-sm-1">
+            <button type="button" class="btn btn-sm btn-info" id="btn_approvalgranted" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing ..." ng-disabled="stateCheckapprovalgranted" >update</button>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Internal Approval Declined</label>
+          <div class="col-sm-2">
+            Initiation Date <input type="text" class="form-control form_date2" id="initiationdateapprovaldeclined" name="initiationdateapprovaldeclined" ng-disabled="stateCheckapprovaldeclined" /> 
+          </div>
+          <div class="col-sm-2">
+            Next Review <input type="text" class="form-control form_date" id="reviewedinternalApprovaldeclined" name="reviewedinternalApprovaldeclined" ng-disabled="stateCheckapprovaldeclined" /> 
+          </div>
+          <div class="col-sm-2">
+            Attachment: <span><input type="file" ng-disabled="stateCheckapprovaldeclined"></span>
+          </div>
+          <div class="col-sm-2">
+            Remark: <textarea class="form-control" rows="2" id="remarkapprovaldeclined" name="remarkapprovaldeclined" ng-disabled="stateCheckapprovaldeclined"></textarea>
+          </div>
+          <div class="col-sm-1">
+            Completed: 
+            <select id="action_completed_approvaldeclined" ng-disabled="stateCheckapprovaldeclined">
+          <option value="N">No</option>
+              <option value="Y">Yes</option>
+          </select>
+          </div>
+          <div class="col-sm-1">
+            <button type="button" class="btn btn-sm btn-info" id="btn_approvaldeclined" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing ..." ng-disabled="stateCheckapprovaldeclined">update</button>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Customer Accepted</label>
+          <div class="col-sm-2">
+            Initiation Date <input type="text" class="form-control form_date2" id="initiationdatecustomeraccepted" name="initiationdatecustomeraccepted" ng-disabled="stateCheckcustomeraccepted" /> 
+          </div>
+          <div class="col-sm-2">
+            Next Review <input type="text" class="form-control form_date" id="reviewedinternalcustomeraccepted" name="reviewedinternalcustomeraccepted" ng-disabled="stateCheckcustomeraccepted" /> 
+          </div>
+          <div class="col-sm-2">
+            Attachment: <span><input type="file" ng-disabled="stateCheckcustomeraccepted"></span>
+          </div>
+          <div class="col-sm-2">
+            Remark: <textarea class="form-control" rows="2" id="remarkcustomeraccepted" name="remarkcustomeraccepted" ng-disabled="stateCheckcustomeraccepted"></textarea>
+          </div>
+          <div class="col-sm-1">
+            Completed: 
+            <select id="action_completed_customeraccepted" ng-disabled="stateCheckcustomeraccepted">
+          <option value="N">No</option>
+              <option value="Y">Yes</option>
+          </select>
+          </div>
+          <div class="col-sm-1">
+            <button type="button" class="btn btn-sm btn-info" id="btn_customeraccepted" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing ..." ng-disabled="stateCheckcustomeraccepted">update</button>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Cure implemented</label>
+          <div class="col-sm-2">
+            Initiation Date <input type="text" class="form-control form_date2" id="initiationdatecure" name="initiationdatecure" /> 
+          </div>
+          <div class="col-sm-2">
+            Next Review <input type="text" class="form-control form_date" id="reviewedcure" name="reviewedcure" /> 
+          </div>
+          <div class="col-sm-2">
+            Attachment: <span><input type="file"></span>
+          </div>
+          <div class="col-sm-2">
+            Remark: <textarea class="form-control" rows="2" id="remarkcure" name="remarkcure"></textarea>
+          </div>
+          <div class="col-sm-1">
+            Completed: 
+            <select id="action_completed_cure">
+          <option value="N">No</option>
+              <option value="Y">Yes</option>
+          </select>
+          </div>
+          <div class="col-sm-1">
+            <button type="button" class="btn btn-sm btn-info" id="btn_cureimplemented" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing ...">update</button>
+          </div>
+        </div>
+      </form>
+      </div>
+</div>

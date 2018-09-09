@@ -1,0 +1,53 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Ability to pay</h3>
+  </div>
+  <div class="panel-body" style="height:500px">
+    <div class="col-sm-6">
+      <form #abilitytopayForm="ngForm" (ngSubmit)="onSubmit(abilitytopayForm.value)">
+            <div class="form-group col-md-12">
+              <label for="abilitytopay">ability to pay</label>
+              <select id="abilitytopay" class="form-control" name="abilitytopay" id="abilitytopay" #abilitytopay="ngModel" [(ngModel)]="model.abilitytopay"
+              (change)="onChange($event.target.value)" required>
+                  <option>able and willing</option>
+                  <option>unable and willing</option>
+                  <option>unwilling and able</option>
+                  <option>unwilling and unable</option>
+                </select>
+              <div class="validation-error" *ngIf="abilitytopay.invalid && abilitytopay.touched">ability to pay is required</div>
+            </div>
+            <!---->
+          <div class="form-row">
+            <button [disabled]="!abilitytopayForm.valid || !abilitytopay.dirty || mydisable" class="btn btn-lg btn-block btn-info" type="submit">
+              <i class="fa fa-save"></i> Submit</button>
+          </div>
+        </form>
+    </div>
+    <div class="col-sm-6">
+      <ul class="nav nav-tabs ">
+        <li class="active">
+          <a href="#tab_default_ability1" data-toggle="tab">
+            History <span class="label label-success">{{abilitytopayhislength}}</span></a>
+        </li>
+        <li>
+          <a href="#tab_default_ability2" data-toggle="tab">
+            Changes </a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab_default_ability1">
+          <table class="table table-sm table-hover">
+            <tr *ngFor="let a of abilitytopayhis">
+              <td>{{a.ABILITYTOPAY}}</td>
+              <td>{{a.OWNER}}</td>
+              <td>{{a.DATEUPDATED | date}}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="tab-pane" id="tab_default_ability2">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

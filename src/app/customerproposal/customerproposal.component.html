@@ -1,0 +1,70 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Customer proposal</h3>
+  </div>
+  <div class="panel-body" style="height:500px">
+    <div class="col-sm-6">
+      <form #customerproposalcommentForm="ngForm" (ngSubmit)="onSubmit(customerproposalcommentForm)">
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="customerproposalcomment">Summary Comment:</label>
+            <textarea class="form-control" rows="8" name="customerproposalcomment" id="customerproposalcomment" #customerproposalcomment="ngModel"
+              [(ngModel)]="model.customerproposalcomment" required></textarea>
+            <div class="validation-error" *ngIf="customerproposalcomment.invalid && customerproposalcomment.touched">Comment is required</div>
+          </div>
+          <!---->
+        </div>
+        <div class="form-row">
+          <button [disabled]="!customerproposalcommentForm.valid || submitted" class="btn btn-lg btn-block btn-info" type="submit">
+            <i class="fa fa-save"></i> Submit</button>
+        </div>
+      </form>
+      <hr>
+      <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+      <button type="button" class="btn btn-success btn-sm" (click)="upload()" [disabled]="!uploader.getNotUploadedItems().length">
+        <i class="fa fa-upload"></i> Upload a file
+      </button>
+    </div>
+    <div class="col-sm-6">
+      <ul class="nav nav-tabs ">
+        <li class="active">
+          <a href="#tab_default_custproposal1" data-toggle="tab">
+            History
+            <span class="label label-success">{{customerproposalhislength}}</span>
+          </a>
+        </li>
+        <li>
+          <a href="#tab_default_custproposal2" data-toggle="tab">
+            Files
+            <span class="label label-success">{{customerproposalFileslength}}</span>
+          </a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab_default_custproposal1" style="min-height: 400px; max-height: 500px; overflow-y: scroll;">
+          <table class="table table-sm table-hover">
+            <tr *ngFor="let c of customerproposalhis">
+              <td>{{c.CUSTOMERPROPOSAL}}</td>
+              <td>{{c.OWNER}}</td>
+              <td>{{c.DATEUPDATED | date}}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="tab-pane" id="tab_default_custproposal2">
+          <table class="table table-sm table-hover">
+            <tr *ngFor="let f of customerproposalFiles">
+              <td>{{f.FILENAME}}</td>
+              <td>{{f.COLOFFICER}}</td>
+              <td>{{f.STAGEDATE | date}}</td>
+              <td>
+                <button class="btn btn-success btn-sm" (click)="downloadFile(f.FILENAME, f.DESTPATH)">
+                  <i class="fa fa-download"></i> Download
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

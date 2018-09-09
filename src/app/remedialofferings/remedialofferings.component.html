@@ -1,0 +1,66 @@
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">Ability to pay</h3>
+    </div>
+    <div class="panel-body" style="height:500px">
+        <div class="col-sm-6">
+            <form #remedialofferingsForm="ngForm" (ngSubmit)="onSubmit(remedialofferingsForm)">
+                <div class="form-group col-md-12">
+                    <label for="remedialofferings">ability to pay</label>
+                    <select id="remedialofferings" class="form-control" name="remedialofferings" id="remedialofferings" #remedialofferings="ngModel"
+                        [(ngModel)]="model.remedialofferings" (change)="onChange($event.target.value)" required>
+                        <option>Private Treaty Sale</option>
+                        <option>Debt discount/Full & Final Settlement</option>
+                        <option>Rescheduling</option>
+                        <option>Interest concessions</option>
+                        <option>Insurance claims</option>
+                        <option>Out of court settlements</option>
+                        <option>Foreclosure</option>
+                        <option>Lumpsum payment</option>
+                        <option>Public sale below the reserve</option>
+                        <option>Top Ups</option>
+                        <option>Exit Relationship / take over</option>
+                        <option>Write off</option>
+                        <option>Restructure</option>
+                        <option>Refinancing</option>
+                    </select>
+                    <div class="validation-error" *ngIf="remedialofferings.invalid && remedialofferings.touched">ability to pay is required</div>
+                </div>
+                <!---->
+                <div class="form-row">
+                    <button [disabled]="!remedialofferingsForm.valid || !remedialofferings.dirty || mydisable" class="btn btn-lg btn-block btn-info"
+                        type="submit">
+                        <i class="fa fa-save"></i> Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-6">
+            <ul class="nav nav-tabs ">
+                <li class="active">
+                    <a href="#tab_default_ability1" data-toggle="tab">
+                        History
+                        <span class="label label-success">{{remedialofferingshislength}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab_default_ability2" data-toggle="tab">
+                        Changes </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab_default_ability1">
+                    <table class="table table-sm table-hover">
+                        <tr *ngFor="let a of remedialofferingshis">
+                            <td>{{a.REMEDIALOFFERINGS}}</td>
+                            <td>{{a.OWNER}}</td>
+                            <td>{{a.DATEUPDATED | date}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tab-pane" id="tab_default_ability2">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
