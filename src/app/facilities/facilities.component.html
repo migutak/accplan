@@ -28,6 +28,7 @@
     <tr>
       <th>acount no</th>
       <th>card acct</th>
+      <th>card no</th>
       <th>card name</th>
       <th>cycle</th>
       <th>outbalance</th>
@@ -38,6 +39,7 @@
     <tr *ngFor="let c of creditcrdList">
       <td>{{c.ACCOUNTNO}}</td>
       <td>{{c.CARDACCT}}</td>
+      <td>{{c.CARDNUMBER}}</td>
       <td>{{c.CARDNAME}}</td>
       <td>{{c.CYCLE}}</td>
       <td>{{c.OUTBALANCE}}</td>
@@ -54,16 +56,16 @@
       <th>phonenumber</th>
       <th>loan type</th>
       <th>loan amount</th>
-      <th>arocode</th>
+      <th>status</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let m of mcoopcashList">
-      <td>{{m.ACCNUMBER}}</td>
-      <td>{{m.CUSTNUMBER}}</td>
-      <td>{{m.PRODUCTCODE}}</td>
-      <td>{{m.OUSTBALANCE}}</td>
-      <td>{{m.AROCODE}}</td>
+      <td>{{m.LOANACCNUMBER}}</td>
+      <td>{{m.PHONENUMBER}}</td>
+      <td>{{m.LOAN_TYPE}}</td>
+      <td>{{m.LOANAMOUNT}}</td>
+      <td>{{m.LOANSTATUS}}</td>
     </tr>
   </tbody>
 </table>

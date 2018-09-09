@@ -15,7 +15,7 @@
           <!---->
         </div>
         <div class="form-row">
-          <button [disabled]="!customerproposalcommentForm.valid || submitted" class="btn btn-lg btn-block btn-info" type="submit">
+          <button [disabled]="!customerproposalcommentForm.valid || !customerproposalcommentForm.dirty" class="btn btn-lg btn-block btn-info" type="submit">
             <i class="fa fa-save"></i> Submit</button>
         </div>
       </form>

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FileSelectDirective } from 'ng2-file-upload';
+import { FileUploadModule } from 'ng2-file-upload';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -33,8 +33,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     CustomerproposalComponent,
     PaymentplanComponent,
     RemedialofferingsComponent,
-    CollectionsComponent,
-    FileSelectDirective
+    CollectionsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +41,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     AtomSpinnerModule,
     HttpClientModule,
     FormsModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    FileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]

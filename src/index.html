@@ -15,6 +15,7 @@
       var custnumber = getParameterByName('custnumber');
       var accnumber = getParameterByName('accnumber');
       var gusername = getParameterByName('username');
+      var nationid = getParameterByName('nationid');
 
       function getParameterByName(name, url) {
         if (!url) url = window.location.href;
@@ -29,10 +30,12 @@
       console.log('global username _in ===', gusername);
       console.log('global accnumber _in ===', accnumber);
       console.log('global custnumber _in ===', custnumber);
+      console.log('global nationid _in ===', nationid);
 
       localStorage.setItem('username', gusername);
       localStorage.setItem('accnumber', accnumber);
       localStorage.setItem('custnumber', custnumber);
+      localStorage.setItem('nationid', nationid);
   </script>
 </body>
 </html>

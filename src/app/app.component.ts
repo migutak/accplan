@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
   url = environment.ecol_apis_host + '/api/v2/accountinfo/' + this.accnumber;
 
   ngOnInit() {
-    // console.log('==current user==', localStorage.getItem('username'));
     this.getCustomer();
   }
 

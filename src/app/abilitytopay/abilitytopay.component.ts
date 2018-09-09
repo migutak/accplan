@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 import swal from 'sweetalert';
 import { AccplanService } from '../accplan.service';
-
-import { environment } from '../../environments/environment';
-import { Form } from '@angular/forms';
 
 const cust = localStorage.getItem('custnumber');
 const acc = localStorage.getItem('accnumber');

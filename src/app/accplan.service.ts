@@ -42,6 +42,10 @@ export class AccplanService {
     return this.httpClient.post(environment.uploadurl + '/api/swot', body);
   }
 
+  submitPtp(body) {
+    return this.httpClient.post(environment.uploadurl + '/api/paymentplans', body);
+  }
+
   getBackground(custnumber) {
     return this.httpClient.get(environment.ecol_apis_host + '/api/accplans/background/' + custnumber);
   }
@@ -62,11 +66,27 @@ export class AccplanService {
     return this.httpClient.get(environment.ecol_apis_host + '/api/accplans/swot/' + custnumber);
   }
 
+  getPtps(custnumber) {
+    return this.httpClient.get(environment.ecol_apis_host + '/api/accplans/paymentplans/' + custnumber);
+  }
+
   getRemedialofferings(custnumber) {
     return this.httpClient.get(environment.ecol_apis_host + '/api/accplans/remedialofferings/' + custnumber);
   }
 
   saveuploadtodb(fileuploaded) {
     return this.httpClient.post(environment.uploadurl + '/api/uploadssavetodb', fileuploaded);
+  }
+
+  getCardwithid (nationid) {
+    return this.httpClient.get(environment.ecol_apis_host + '/api/status/cardswithnationid/' + nationid);
+  }
+
+  getMcoopwithid (nationid) {
+    return this.httpClient.get(environment.ecol_apis_host + '/api/status/mcoopwithnationid/' + nationid);
+  }
+
+  getFacilities (custnumber) {
+    return this.httpClient.get(environment.ecol_apis_host + '/api/v2/views/' + custnumber);
   }
 }

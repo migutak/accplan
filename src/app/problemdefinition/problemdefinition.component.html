@@ -1,50 +1,55 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-          <h3 class="panel-title">Problem definition</h3>
-      </div>
-      <div class="panel-body" style="height:500px">
-        <div class="col-sm-6">
-          <form #problemdefinitioncommentForm="ngForm" (ngSubmit)="onSubmit(problemdefinitioncommentForm)">
-              <div class="form-row">
-                  <div class="form-group col-md-12">
-                      <label for="problemdefinitioncomment">Summary Comment:</label>
-                      <textarea class="form-control" rows="8" name="problemdefinitioncomment" id="problemdefinitioncomment" #problemdefinitioncomment="ngModel" [(ngModel)]="model.problemdefinitioncomment" required></textarea>
-                      <div class="validation-error" *ngIf="problemdefinitioncomment.invalid && problemdefinitioncomment.touched">Comment is required</div>
-                  </div> <!---->
-              </div>
-              <div class="form-row">
-                  <button [disabled]="!problemdefinitioncommentForm.valid || submitted" class="btn btn-lg btn-block btn-info" type="submit"><i class="fa fa-save"></i> Submit</button>
-              </div>
-          </form>
-          <hr>
-          <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
-
-          <button type="button" class="btn btn-success btn-sm" 
-            (click)="upload()" 
-            [disabled]="!uploader.getNotUploadedItems().length" >
-            <i class="fa fa-upload"></i> Upload a file
-          </button> 
+    <h3 class="panel-title">Problem definition</h3>
+  </div>
+  <div class="panel-body" style="height:500px">
+    <div class="col-sm-6">
+      <form #problemdefinitioncommentForm="ngForm" (ngSubmit)="onSubmit(problemdefinitioncommentForm)">
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="problemdefinitioncomment">Summary Comment:</label>
+            <textarea class="form-control" rows="8" name="problemdefinitioncomment" id="problemdefinitioncomment" #problemdefinitioncomment="ngModel"
+              [(ngModel)]="model.problemdefinitioncomment" required></textarea>
+            <div class="validation-error" *ngIf="problemdefinitioncomment.invalid && problemdefinitioncomment.touched">Comment is required</div>
+          </div>
+          <!---->
         </div>
-        <div class="col-sm-6">
-          <ul class="nav nav-tabs ">
+        <div class="form-row">
+          <button [disabled]="!problemdefinitioncommentForm.valid || !problemdefinitioncommentForm.dirty" class="btn btn-lg btn-block btn-info" type="submit">
+            <i class="fa fa-save"></i> Submit</button>
+        </div>
+      </form>
+      <hr>
+      <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+
+      <button type="button" class="btn btn-success btn-sm" (click)="upload()" [disabled]="!uploader.getNotUploadedItems().length">
+        <i class="fa fa-upload"></i> Upload a file
+      </button>
+    </div>
+    <div class="col-sm-6">
+      <ul class="nav nav-tabs ">
         <li class="active">
           <a href="#tab_default_problem1" data-toggle="tab">
-          History <span class="label label-success">{{problemdefinitionhislength}}</span></a>
+            History
+            <span class="label label-success">{{problemdefinitionhislength}}</span>
+          </a>
         </li>
         <li>
           <a href="#tab_default_problem2" data-toggle="tab">
-          Files <span class="label label-success">{{problemdefinitionFileslength}}</span></a>
+            Files
+            <span class="label label-success">{{problemdefinitionFileslength}}</span>
+          </a>
         </li>
       </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="tab_default_problem1" style="min-height: 500px; max-height: 600px; overflow-y: scroll;">
-            <table class="table table-sm table-hover">
-                <tr *ngFor="let p of problemdefinitionhis">
-                  <td>{{p.PROBLEMDEFINITION}}</td>
-                  <td>{{p.OWNER}}</td>
-                  <td>{{p.DATEUPDATED | date}}</td>
-                </tr>
-            </table>
+          <table class="table table-sm table-hover">
+            <tr *ngFor="let p of problemdefinitionhis">
+              <td>{{p.PROBLEMDEFINITION}}</td>
+              <td>{{p.OWNER}}</td>
+              <td>{{p.DATEUPDATED | date}}</td>
+            </tr>
+          </table>
         </div>
         <div class="tab-pane" id="tab_default_problem2">
           <table class="table table-sm table-hover">
@@ -52,14 +57,15 @@
               <td>{{f.FILENAME}}</td>
               <td>{{f.COLOFFICER}}</td>
               <td>{{f.STAGEDATE | date}}</td>
-              <td><button class="btn btn-success btn-sm" (click)="downloadFile(f.FILENAME, f.DESTPATH)">
+              <td>
+                <button class="btn btn-success btn-sm" (click)="downloadFile(f.FILENAME, f.DESTPATH)">
                   <i class="fa fa-download"></i> Download
-              </button>
+                </button>
               </td>
             </tr>
           </table>
         </div>
       </div>
-        </div>
-      </div>
+    </div>
+  </div>
 </div>

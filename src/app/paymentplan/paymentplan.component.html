@@ -11,18 +11,18 @@
             <th>PTP Amount</th>
             <th>PTP Date</th>
             <th>Frequency</th>
-            <th>Freq No.</th>
-            <th>dateMade</th>
+            <th>No. of payments</th>
+            <th>Date Made</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let p of paymentplanshis">
+          <tr *ngFor="let p of ptphis">
             <td>{{p.ACCNUMBER}}</td>
             <td>{{p.PTPAMOUNT}}</td>
-            <td>{{p.PTPSTARTDATE}}</td>
+            <td>{{p.PTPSTARTDATE | date}}</td>
             <td>{{p.PTPFREQ}}</td>
-            <td>{{p.FREQNO}}</td>
-            <td>{{p.DATEUPDATED}}</td>
+            <td>{{p.NO_OF_FREQUENCY}}</td>
+            <td>{{p.DATEUPDATED | date}}</td>
           </tr>
         </tbody>
       </table>
