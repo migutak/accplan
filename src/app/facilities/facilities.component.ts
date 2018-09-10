@@ -18,6 +18,7 @@ export class FacilitiesComponent implements OnInit {
 
   url = environment.ecol_apis_host + '/api/v2/views/' + this.custnumber;
   facilitiesList: any;
+  facilitiesLength: number;
   creditcrdList: any = [];
   mcoopcashList: any = [];
 

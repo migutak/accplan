@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
+import swal from 'sweetalert';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,14 @@ import { environment } from '../environments/environment';
 export class AccplanService {
 
   constructor(private httpClient: HttpClient) { }
+
+  loader() {
+    swal({
+      title: 'Processing...',
+      text: 'Please wait',
+      closeOnClickOutside: false
+    });
+  }
 
   downloadFile(file: string) {
     const body = {filename: file};

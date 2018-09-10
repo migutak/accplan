@@ -166,7 +166,7 @@
       <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
       <label>Doc desc</label>
       <textarea class="form-control" rows="2" id="docdesc" name="docdesc" ([ngModel])="docdesccomment" #docdesccomment></textarea>
-      <button type="button" class="btn btn-success btn-sm" (click)="upload()" [disabled]="!uploader.getNotUploadedItems().length">
+      <button type="button" class="btn btn-success btn-sm" (click)="upload(docdesccomment.value)" [disabled]="!uploader.getNotUploadedItems().length">
         <i class="fa fa-upload"></i> Upload a file
       </button>
     </div>

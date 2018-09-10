@@ -38,6 +38,7 @@ export class CustomerproposalComponent implements OnInit {
   customerproposalFileslength: number;
   customerproposalhislength: number;
   model: any = {};
+  button: Boolean = false;
 
   public uploader: FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
 
@@ -47,34 +48,44 @@ export class CustomerproposalComponent implements OnInit {
   }
 
   upload() {
+    //
+    this.accplanService.loader();
+
     this.uploader.uploadAll();
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+    this.uploader.onErrorItem = (item: any, response: any, status: any, headers: any) => {
+      console.log('error....', item, response, status);
+      swal('Error!', 'file upload service currently not available', 'error');
+    };
      this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-         // console.log('ImageUpload:item:', item);
-         const filereceived = JSON.parse(response);
-         this.fileuploaded.filename = filereceived.file.originalname;
-         this.fileuploaded.destpath = environment.fileLocation + filereceived.file.path;
-         this.fileuploaded.filesize = filereceived.file.size;
-         this.fileuploaded.custnumber = cust;
-         this.fileuploaded.accnumber = acc;
-         this.fileuploaded.colofficer = username;
-         this.fileuploaded.doctype = 'accplan_customerproposal_file';
-         //
-         this.accplanService.saveuploadtodb(this.fileuploaded).subscribe(data => {
-           // console.log(data);
-           swal('Upload successful!', this.fileuploaded.filename + ' received!', 'success');
-           this.getUploads();
-         }, error => {
-           console.log(error);
-           swal('Error!', this.fileuploaded.filename + ' not received!', 'error');
-         });
+         if (response) {
+          const filereceived = JSON.parse(response);
+          this.fileuploaded.filename = filereceived.file.originalname;
+          this.fileuploaded.destpath = environment.fileLocation + filereceived.file.path;
+          this.fileuploaded.filesize = filereceived.file.size;
+          this.fileuploaded.custnumber = cust;
+          this.fileuploaded.accnumber = acc;
+          this.fileuploaded.colofficer = username;
+          this.fileuploaded.doctype = 'accplan_customerproposal_file';
+          //
+          this.accplanService.saveuploadtodb(this.fileuploaded).subscribe(data => {
+            // console.log(data);
+            swal('Upload successful!', this.fileuploaded.filename + ' received!', 'success');
+            this.getUploads();
+          }, error => {
+            console.log(error);
+            swal('Error!', this.fileuploaded.filename + ' not received!', 'error');
+          });
+         }
       };
   }
 
   getUploads() {
     this.httpClient.get(environment.ecol_apis_host + '/api/status/files/' + cust + '/accplan_customerproposal_file').subscribe(data => {
       this.customerproposalFiles = data;
-      this.customerproposalFileslength = this.customerproposalFiles.length;
+      if (data) {
+        this.customerproposalFileslength = this.customerproposalFiles.length;
+      }
      // console.log(data);
     }, error => {
       console.log(error);

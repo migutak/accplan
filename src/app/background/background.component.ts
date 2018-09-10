@@ -48,10 +48,16 @@ export class BackgroundComponent implements OnInit {
   }
 
   upload() {
+    this.accplanService.loader();
+
     this.uploader.uploadAll();
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+    this.uploader.onErrorItem = (item: any, response: any, status: any, headers: any) => {
+      console.log('error....', item, response, status);
+      swal('Error!', 'File upload service currently not available', 'error');
+    };
      this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-         // console.log('ImageUpload:item:', item);
+        if (response) {
          const filereceived = JSON.parse(response);
          this.fileuploaded.filename = filereceived.file.originalname;
          this.fileuploaded.destpath = environment.fileLocation + filereceived.file.path;
@@ -69,6 +75,7 @@ export class BackgroundComponent implements OnInit {
            console.log(error);
            swal('Error!', this.fileuploaded.filename + ' NOT received!', 'error');
          });
+        }
       };
   }
 
