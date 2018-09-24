@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import swal from 'sweetalert';
+import swal from 'sweetalert2';
 import { AccplanService } from '../accplan.service';
 
 const cust = localStorage.getItem('custnumber');
@@ -27,7 +27,7 @@ export class SwotComponent implements OnInit {
   }
 
   onSubmit(form) {
-    console.log(form);
+    this.accplanService.loader();
     const body = {
       planid: cust,
       accnumber: acc,

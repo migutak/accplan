@@ -53,7 +53,7 @@ export class FacilitiesComponent implements OnInit {
 
   getMcoopCash() {
     this.accplanService.getMcoopwithid(this.nationid).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.mcoopcashList = data;
     }, error => {
       // error

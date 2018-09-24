@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import swal from 'sweetalert';
+import swal2 from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,19 @@ export class AccplanService {
   constructor(private httpClient: HttpClient) { }
 
   loader() {
-    swal({
+    /*swal({
       title: 'Processing...',
       text: 'Please wait',
       closeOnClickOutside: false
+    });*/
+
+    swal2({
+      title: 'Processing ...',
+      text: 'Please wait',
+      showConfirmButton: false,
+      onOpen: function () {
+        swal2.showLoading();
+      }
     });
   }
 
@@ -97,5 +107,9 @@ export class AccplanService {
 
   getFacilities (custnumber) {
     return this.httpClient.get(environment.ecol_apis_host + '/api/v2/views/' + custnumber);
+  }
+
+  getCustomer (accnumber) {
+    return this.httpClient.get(environment.ecol_apis_host + '/api/v2/accountinfo/' + accnumber);
   }
 }

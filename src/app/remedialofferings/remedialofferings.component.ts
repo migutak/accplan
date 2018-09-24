@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import swal from 'sweetalert';
+import swal from 'sweetalert2';
 import { AccplanService } from '../accplan.service';
 
-import { environment } from '../../environments/environment';
-import { Form } from '@angular/forms';
-
-const URL = environment.uploadurl + '/api/upload';
-const urltodb = environment.uploadurl + '/api/uploadssavetodb';
 const cust = localStorage.getItem('custnumber');
 const acc = localStorage.getItem('accnumber');
 const username = localStorage.getItem('username');
@@ -30,6 +25,7 @@ export class RemedialofferingsComponent implements OnInit {
   }
 
   onSubmit(form) {
+    this.accplanService.loader();
     const body = {
       planid: cust,
       accnumber: acc,
