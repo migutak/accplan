@@ -31,7 +31,7 @@ export class FacilitiesComponent implements OnInit {
   // lst employees
   getFacilitiesList() {
     this.accplanService.getFacilities(this.custnumber).subscribe(data => {
-      // console.log(data);
+      console.log(data);
       this.facilitiesList = data;
     }, error => {
       // error

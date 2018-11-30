@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
-import swal from 'sweetalert';
 import swal2 from 'sweetalert2';
 
 @Injectable({
@@ -111,5 +110,11 @@ export class AccplanService {
 
   getCustomer (accnumber) {
     return this.httpClient.get(environment.ecol_apis_host + '/api/v2/accountinfo/' + accnumber);
+  }
+
+  // actions
+  submitInitiation(body) {
+    console.log('data to save', body);
+    return this.httpClient.post(environment.uploadurl + '/api/initiation', body);
   }
 }

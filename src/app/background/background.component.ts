@@ -6,7 +6,6 @@ import { AccplanService } from '../accplan.service';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
-import { Form } from '@angular/forms';
 
 const URL = environment.uploadurl + '/api/upload';
 const cust = localStorage.getItem('custnumber');
