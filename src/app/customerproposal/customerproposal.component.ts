@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  FileUploader } from 'ng2-file-upload';
-import swal from 'sweetalert';
+import swal from 'sweetalert2';
 import { saveAs} from 'file-saver';
 import { AccplanService } from '../accplan.service';
 import { HttpClient } from '@angular/common/http';
@@ -111,6 +111,7 @@ export class CustomerproposalComponent implements OnInit {
   }
 
   onSubmit(form) {
+    this.accplanService.loader();
     const body = {
       planid: cust,
       accnumber: acc,

@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {  FileUploader } from 'ng2-file-upload';
-import swal from 'sweetalert';
+import swal from 'sweetalert2';
 import { saveAs} from 'file-saver';
 import { AccplanService } from '../accplan.service';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
-import { Form } from '@angular/forms';
 
 const URL = environment.uploadurl + '/api/upload';
 const cust = localStorage.getItem('custnumber');
@@ -54,7 +53,7 @@ export class BackgroundComponent implements OnInit {
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
     this.uploader.onErrorItem = (item: any, response: any, status: any, headers: any) => {
       console.log('error....', item, response, status);
-      swal('Error!', 'File upload service currently not available', 'error');
+      swal('Error!', 'File upload service is currently not available', 'error');
     };
      this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
         if (response) {
@@ -109,6 +108,9 @@ export class BackgroundComponent implements OnInit {
 
   onSubmit(form) {
     // console.log(form.value);
+    // Loading indictor
+    this.accplanService.loader();
+    //
     const body = {
       planid: cust,
       accnumber: acc,

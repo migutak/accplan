@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import swal from 'sweetalert';
+import swal from 'sweetalert2';
 import { AccplanService } from '../accplan.service';
 
 const cust = localStorage.getItem('custnumber');
@@ -25,6 +25,7 @@ export class AbilitytopayComponent implements OnInit {
   }
 
   onSubmit(form) {
+    this.accplanService.loader();
     const body = {
       planid: cust,
       accnumber: acc,
@@ -47,9 +48,11 @@ export class AbilitytopayComponent implements OnInit {
   getNotes() {
     this.accplanService.getabilitytopay(cust).subscribe(data => {
       this.abilitytopayhis = data;
+      if (this.abilitytopayhis.length > 0) {
       this.abilitytopayhislength = this.abilitytopayhis.length;
       this.model.abilitytopay = data[0].ABILITYTOPAY;
       this.model.currentabilitytopay = data[0].ABILITYTOPAY;
+      }
     }, error => {
       console.log(error);
     });

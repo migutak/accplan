@@ -31,7 +31,7 @@ export class FacilitiesComponent implements OnInit {
   // lst employees
   getFacilitiesList() {
     this.accplanService.getFacilities(this.custnumber).subscribe(data => {
-      // console.log(data);
+      console.log(data);
       this.facilitiesList = data;
     }, error => {
       // error
@@ -53,7 +53,7 @@ export class FacilitiesComponent implements OnInit {
 
   getMcoopCash() {
     this.accplanService.getMcoopwithid(this.nationid).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.mcoopcashList = data;
     }, error => {
       // error
