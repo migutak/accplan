@@ -42,18 +42,18 @@
           <div class="tab-pane active" id="tab_default_1" style="min-height: 500px; max-height: 600px; overflow-y: scroll;">
               <table class="table table-sm table-hover">
                   <tr *ngFor="let b of backgroundhistory">
-                    <td>{{b.BACKGROUND}}</td>
-                    <td>{{b.OWNER}}</td>
-                    <td>{{b.DATEUPDATED | date}}</td>
+                    <td>{{b.background}}</td>
+                    <td>{{b.owner}}</td>
+                    <td>{{b.dateupdated | date}}</td>
                   </tr>
               </table>
           </div>
           <div class="tab-pane" id="tab_default_2">
             <table class="table table-sm table-hover">
               <tr *ngFor="let f of backgroundFiles">
-                <td>{{f.FILENAME}}</td>
-                <td>{{f.COLOFFICER}}</td>
-                <td>{{f.STAGEDATE | date}}</td>
+                <td>{{f.filename}}</td>
+                <td>{{f.colofficer}}</td>
+                <td>{{f.stagedate | date}}</td>
                 <td><button class="btn btn-success btn-sm" (click)="downloadFile(f.FILENAME, f.DESTPATH)">
                     <i class="fa fa-download"></i> Download
                 </button>

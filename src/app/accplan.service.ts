@@ -37,31 +37,31 @@ export class AccplanService {
   }
 
   submitBackground(body) {
-    return this.httpClient.post(environment.uploadurl + '/api/plan_background', body);
+    return this.httpClient.post(environment.ecol_apis_host + '/api/plan_background', body);
   }
 
   submitProblemdefinition(body) {
-    return this.httpClient.post(environment.uploadurl + '/api/plan_problemdefinition', body);
+    return this.httpClient.post(environment.ecol_apis_host + '/api/plan_problemdefinition', body);
   }
 
   submitCustomerproposal(body) {
-    return this.httpClient.post(environment.uploadurl + '/api/plan_customerproposal', body);
+    return this.httpClient.post(environment.ecol_apis_host + '/api/plan_customerproposal', body);
   }
 
   submitAbilitytopay(body) {
-    return this.httpClient.post(environment.uploadurl + '/api/plan_ability', body);
+    return this.httpClient.post(environment.ecol_apis_host + '/api/plan_ability', body);
   }
 
   submitRemedialoffering(body) {
-    return this.httpClient.post(environment.uploadurl + '/api/plan_remedialofferings', body);
+    return this.httpClient.post(environment.ecol_apis_host + '/api/plan_remedialofferings', body);
   }
 
   submitSwot(body) {
-    return this.httpClient.post(environment.uploadurl + '/api/plan_swot', body);
+    return this.httpClient.post(environment.ecol_apis_host + '/api/plan_swot', body);
   }
 
   submitPtp(body) {
-    return this.httpClient.post(environment.uploadurl + '/api/plan_ptpplans', body);
+    return this.httpClient.post(environment.ecol_apis_host + '/api/plan_ptpplans', body);
   }
 
   getBackground(custnumber) {
@@ -98,11 +98,11 @@ export class AccplanService {
   }
 
   saveuploadtodb(fileuploaded) {
-    return this.httpClient.post(environment.uploadurl + '/api/uploadssavetodb', fileuploaded);
+    return this.httpClient.post(environment.ecol_apis_host + '/api/uploads', fileuploaded);
   }
 
   getCardwithid (nationid) {
-    return this.httpClient.get(environment.ecol_apis_host + '/api/card_stage?filter[where][idnumber]=' + nationid);
+    return this.httpClient.get(environment.ecol_apis_host + '/api/cards_stage?filter[where][idnumber]=' + nationid);
   }
 
   getMcoopwithid (nationid) {
