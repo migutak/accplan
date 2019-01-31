@@ -37,59 +37,64 @@ export class AccplanService {
   }
 
   submitBackground(body) {
-    return this.httpClient.post(environment.uploadurl + '/api/background', body);
+    return this.httpClient.post(environment.uploadurl + '/api/plan_background', body);
   }
 
   submitProblemdefinition(body) {
-    return this.httpClient.post(environment.uploadurl + '/api/problemdefinition', body);
+    return this.httpClient.post(environment.uploadurl + '/api/plan_problemdefinition', body);
   }
 
   submitCustomerproposal(body) {
-    return this.httpClient.post(environment.uploadurl + '/api/customerproposal', body);
+    return this.httpClient.post(environment.uploadurl + '/api/plan_customerproposal', body);
   }
 
   submitAbilitytopay(body) {
-    return this.httpClient.post(environment.uploadurl + '/api/abilitytopay', body);
+    return this.httpClient.post(environment.uploadurl + '/api/plan_ability', body);
   }
 
   submitRemedialoffering(body) {
-    return this.httpClient.post(environment.uploadurl + '/api/remedialofferings', body);
+    return this.httpClient.post(environment.uploadurl + '/api/plan_remedialofferings', body);
   }
 
   submitSwot(body) {
-    return this.httpClient.post(environment.uploadurl + '/api/swot', body);
+    return this.httpClient.post(environment.uploadurl + '/api/plan_swot', body);
   }
 
   submitPtp(body) {
-    return this.httpClient.post(environment.uploadurl + '/api/paymentplans', body);
+    return this.httpClient.post(environment.uploadurl + '/api/plan_ptpplans', body);
   }
 
   getBackground(custnumber) {
-    return this.httpClient.get(environment.ecol_apis_host + '/api/accplans/background/' + custnumber);
+    return this.httpClient.get(environment.ecol_apis_host + '/api/plan_background?filter[where][custnumber]=' + custnumber);
   }
 
   getProblemdefinition(custnumber) {
-    return this.httpClient.get(environment.ecol_apis_host + '/api/accplans/problemdefinition/' + custnumber);
+    return this.httpClient.get(environment.ecol_apis_host + '/api/plan_problemdefinition?filter[where][custnumber]=' + custnumber);
   }
 
   getCustomerproposal(custnumber) {
-    return this.httpClient.get(environment.ecol_apis_host + '/api/accplans/customerproposals/' + custnumber);
+    // tslint:disable-next-line:max-line-length
+    return this.httpClient.get(environment.ecol_apis_host + '/api/plan_customerproposals?filter[where][custnumber]=' + custnumber + '&filter[where][deleted]=N&filter[order]=DATEUPDATED DESC');
   }
 
   getabilitytopay(custnumber) {
-    return this.httpClient.get(environment.ecol_apis_host + '/api/accplans/abilitytopay/' + custnumber);
+    // tslint:disable-next-line:max-line-length
+    return this.httpClient.get(environment.ecol_apis_host + '/api/plan_ability?filter[where][custnumber]=' + custnumber + '&filter[where][deleted]=N&filter[order]=DATEUPDATED DESC');
   }
 
   getSwot(custnumber) {
-    return this.httpClient.get(environment.ecol_apis_host + '/api/accplans/swot/' + custnumber);
+    // tslint:disable-next-line:max-line-length
+    return this.httpClient.get(environment.ecol_apis_host + '/api/plan_swot?filter[where][custnumber]=' + custnumber + '&filter[where][deleted]=N&filter[order]=DATEUPDATED DESC');
   }
 
   getPtps(custnumber) {
-    return this.httpClient.get(environment.ecol_apis_host + '/api/accplans/paymentplans/' + custnumber);
+    // tslint:disable-next-line:max-line-length
+    return this.httpClient.get(environment.ecol_apis_host + '/api/plan_ptpplans?filter[where][custnumber]==' + custnumber + '&filter[where][deleted]=N&filter[order]=DATEUPDATED DESC');
   }
 
   getRemedialofferings(custnumber) {
-    return this.httpClient.get(environment.ecol_apis_host + '/api/accplans/remedialofferings/' + custnumber);
+    // tslint:disable-next-line:max-line-length
+    return this.httpClient.get(environment.ecol_apis_host + '/api/plan_remedialofferings?filter[where][custnumber]=' + custnumber + '&filter[where][deleted]=N&filter[order]=DATEUPDATED DESC');
   }
 
   saveuploadtodb(fileuploaded) {
@@ -97,19 +102,20 @@ export class AccplanService {
   }
 
   getCardwithid (nationid) {
-    return this.httpClient.get(environment.ecol_apis_host + '/api/status/cardswithnationid/' + nationid);
+    return this.httpClient.get(environment.ecol_apis_host + '/api/card_stage?filter[where][idnumber]=' + nationid);
   }
 
   getMcoopwithid (nationid) {
-    return this.httpClient.get(environment.ecol_apis_host + '/api/status/mcoopwithnationid/' + nationid);
+    return this.httpClient.get(environment.ecol_apis_host + '/api/mcoopcash_stage?filter[where][idnumber]=' + nationid);
   }
 
   getFacilities (custnumber) {
-    return this.httpClient.get(environment.ecol_apis_host + '/api/v2/views/' + custnumber);
+    return this.httpClient.get(environment.ecol_apis_host + '/api/qview?filter[where][custnumber]=' + custnumber);
   }
 
   getCustomer (accnumber) {
-    return this.httpClient.get(environment.ecol_apis_host + '/api/v2/accountinfo/' + accnumber);
+    // return this.httpClient.get(environment.ecol_apis_host + '/api/v2/accountinfo/' + accnumber);
+    return this.httpClient.get(environment.ecol_apis_host + '/api/tbl_q_all/' + accnumber);
   }
 
   // actions

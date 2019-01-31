@@ -79,7 +79,8 @@ export class BackgroundComponent implements OnInit {
   }
 
   getUploads() {
-    this.httpClient.get(environment.ecol_apis_host + '/api/status/files/' + cust + '/accplan_background_file').subscribe(data => {
+    // tslint:disable-next-line:max-line-length
+    this.httpClient.get(environment.ecol_apis_host + '/api/uploads?filter[where][custnumber]=' + cust + '&filter[where][doctype]=accplan_background_file&filter[order]=stagedate DESC').subscribe(data => {
       this.backgroundFiles = data;
       this.backgroundFileslength = this.backgroundFiles.length;
      // console.log(data);

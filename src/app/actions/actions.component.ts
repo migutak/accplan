@@ -79,7 +79,8 @@ export class ActionsComponent implements OnInit {
   }
 
   getproposal() {
-    this.httpClient.get(environment.ecol_apis_host + '/api/status/planactions/proposal-received/' + cust).subscribe(data => {
+    // tslint:disable-next-line:max-line-length
+    this.httpClient.get(environment.ecol_apis_host + '/api/plan_actions?filter[where][actionagreed]=PROPOSAL-RECEIVED&filter[where][custnumber]=' + cust).subscribe(data => {
       this.dataproposal = data;
       if (this.dataproposal.length > 0) {
         this.model.initiationdateProposal = this.dataproposal[0].INITIATIONDATE;
@@ -101,7 +102,8 @@ export class ActionsComponent implements OnInit {
   }
 
   fetchinternalapprovals() {
-    this.httpClient.get(environment.ecol_apis_host + '/api/status/planactions/internal-approval/' + cust).subscribe(data => {
+    // tslint:disable-next-line:max-line-length
+    this.httpClient.get(environment.ecol_apis_host + '/api/plan_actions?filter[where][actionagreed]=INTERNAL-APPROVAL&filter?[where][custnumber]=' + cust).subscribe(data => {
       this.dataproposal = data;
       if (this.dataproposal.length > 0) {
         this.model.initiationdateapprovalsort = this.dataproposal[0].INITIATIONDATE;
@@ -130,7 +132,8 @@ export class ActionsComponent implements OnInit {
   }
 
   fetchcustaccept() {
-    this.httpClient.get(environment.ecol_apis_host + '/api/status/planactions/cust-accept/' + cust).subscribe(data => {
+    // tslint:disable-next-line:max-line-length
+    this.httpClient.get(environment.ecol_apis_host + '/api/plan_actions?filter[where][actionagreed]=CUST-ACCEPT&filter[where][custnumber]=' + cust).subscribe(data => {
       this.dataproposal = data;
       if (this.dataproposal.length > 0) {
         this.model.initiationdatecustomeraccepted = this.dataproposal[0].INITIATIONDATE;
@@ -157,7 +160,8 @@ export class ActionsComponent implements OnInit {
   }
 
   fetchcure() {
-    this.httpClient.get(environment.ecol_apis_host + '/api/status/planactions/cure-implemented/' + cust).subscribe(data => {
+    // tslint:disable-next-line:max-line-length
+    this.httpClient.get(environment.ecol_apis_host + '/api/plan_actions?filter[where][actionagreed]=CURE-IMPLEMENTED&filter[where][custnumber]=' + cust).subscribe(data => {
       this.dataproposal = data;
       if (this.dataproposal.length > 0) {
         this.model.initiationdatecure = this.dataproposal[0].INITIATIONDATE;
@@ -207,7 +211,8 @@ export class ActionsComponent implements OnInit {
   }
 
   getUploads() {
-    this.httpClient.get(environment.ecol_apis_host + '/api/status/files/' + cust + '/accplan_action_file').subscribe(data => {
+    // tslint:disable-next-line:max-line-length
+    this.httpClient.get(environment.ecol_apis_host + '/api/uploads?filter[where][custnumber]=' + cust + '&filter[where][doctype]=accplan_action_file&filter[order]=stagedate DESC').subscribe(data => {
       this.actionfiles = data;
       this.actionfileslength = this.actionfiles.length;
       // console.log(data);

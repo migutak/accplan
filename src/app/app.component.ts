@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
 
   constructor(private httpClient: HttpClient, private accplanService: AccplanService) { }
 
-  url = environment.ecol_apis_host + '/api/v2/accountinfo/' + this.accnumber;
+  url = environment.ecol_apis_host + '/api/tbl_q_all?filter[where][accnumber]=' + this.accnumber;
 
   ngOnInit() {
     this.getCustomer(this.accnumber);
@@ -28,10 +28,10 @@ export class AppComponent implements OnInit {
 
   getCustomer(accnumber) {
     this.httpClient.get(this.url).subscribe(data => {
-      // console.log(data);
-      this.firstname = data[0].FIRSTNAME;
-      this.addressline = data[0].ADDRESSLINE1;
-      this.telnumber = data[0].TELNUMBER;
+      console.log(data);
+      this.firstname = data[0].client_name;
+      this.addressline = data[0].addressline1;
+      this.telnumber = data[0].telnumber;
       this.showLoadingIndicator = false;
     }, error => {
       // error

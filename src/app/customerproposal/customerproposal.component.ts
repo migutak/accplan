@@ -81,7 +81,7 @@ export class CustomerproposalComponent implements OnInit {
   }
 
   getUploads() {
-    this.httpClient.get(environment.ecol_apis_host + '/api/status/files/' + cust + '/accplan_customerproposal_file').subscribe(data => {
+    this.httpClient.get(environment.ecol_apis_host + '/api/uploads?filter[where][custnumber]=' + cust + '&filter[where][doctype]=accplan_customerproposal_file&filter[order]=stagedate DESC').subscribe(data => {
       this.customerproposalFiles = data;
       if (data) {
         this.customerproposalFileslength = this.customerproposalFiles.length;
