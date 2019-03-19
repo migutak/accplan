@@ -56,10 +56,11 @@ export class BackgroundComponent implements OnInit {
       swal('Error!', 'File upload service is currently not available', 'error');
     };
      this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+        console.log('file uploaded ===>line59...', response);
         if (response) {
          const filereceived = JSON.parse(response);
          this.fileuploaded.filename = filereceived.file.originalname;
-         this.fileuploaded.destpath = environment.fileLocation + filereceived.file.path;
+         this.fileuploaded.destpath = filereceived.file.path; // environment.fileLocation +
          this.fileuploaded.filesize = filereceived.file.size;
          this.fileuploaded.custnumber = cust;
          this.fileuploaded.accnumber = acc;

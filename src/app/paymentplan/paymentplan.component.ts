@@ -25,7 +25,7 @@ export class PaymentplanComponent implements OnInit {
     ptpamount: null,
     no_of_frequency: null,
     ptpstartdate: null,
-    ptpenddate: null
+    // ptpenddate: null
   };
 
   constructor(private accplanService: AccplanService) {
@@ -45,22 +45,24 @@ export class PaymentplanComponent implements OnInit {
       planid: cust,
       accnumber: acc,
       custnumber: cust,
-      planfreq: form.value.planfreq,
+      ptpfreq: form.value.planfreq,
       ptpamount: form.value.ptpamount,
       no_of_frequency: form.value.no_of_frequency,
       ptpstartdate: form.value.ptpstartdate + 1,
-      ptpenddate: form.value.ptpenddate + 1,
+      ptpenddate: form.value.ptpstartdate + form.value.planfreq,
       owner: username
     };
 
     this.accplanService.submitPtp(body).subscribe(data => {
       this.result = data;
-      if (this.result.result === 'OK') {
+      swal('Successful!', 'saved successfully!', 'success');
+      this.getNotes();
+      /* if (this.result.result === 'OK') {
         swal('Successful!', 'saved successfully!', 'success');
         this.getNotes();
       } else {
         swal('Error!', 'Error occurred during processing!', 'error');
-      }
+      }*/
       // this.mydisable = true;
     }, error => {
       console.log(error);
@@ -70,7 +72,7 @@ export class PaymentplanComponent implements OnInit {
 
   getNotes() {
     this.accplanService.getPtps(cust).subscribe(data => {
-     // console.log(data);
+      console.log(data);
       this.ptphis = data;
     }, error => {
       console.log(error);

@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   ecol_apis_host: 'http://ecollectapp.co-opbank.co.ke:8800',
-  uploadurl: 'http://ecollectapp.co-opbank.co.ke:3000',
-  fileLocation: '/Users/kevinabongo/Documents/uploads'
+  uploadurl: 'http://ecollectapp.co-opbank.co.ke:4000',
+  fileLocation: '/Users/kevinabongo/nodejsProjects/upload_coop/'
 };
 
 /*

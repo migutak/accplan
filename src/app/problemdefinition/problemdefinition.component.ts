@@ -59,7 +59,7 @@ export class ProblemdefinitionComponent implements OnInit {
         if (response) {
          const filereceived = JSON.parse(response);
          this.fileuploaded.filename = filereceived.file.originalname;
-         this.fileuploaded.destpath = environment.fileLocation + filereceived.file.path;
+         this.fileuploaded.destpath = filereceived.file.path;
          this.fileuploaded.filesize = filereceived.file.size;
          this.fileuploaded.custnumber = cust;
          this.fileuploaded.accnumber = acc;

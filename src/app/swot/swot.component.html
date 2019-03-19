@@ -37,7 +37,7 @@
           </div>
           <div class="validation-error" *ngIf="threats.invalid && threats.touched">threats is required</div>
         </div>
-        <button [disabled]="!swotForm.valid || !swotForm.dirty || swotForm.submitted" class="btn btn-lg btn-info"
+        <button [disabled]="!swotForm.valid || !swotForm.dirty" class="btn btn-lg btn-info"
           type="submit">
           <i class="fa fa-save"></i> Submit</button>
       </form>
@@ -58,13 +58,13 @@
           <table class="table table-sm table-hover">
             <tr *ngFor="let s of swothis">
               <td>
-                <p>strengths: {{s.STRENGTHS}}</p> 
-                <p>weaknesses: {{s.WEAKNESSES}}</p>
-                <p>opportunities: {{s.OPPORTUNITIES}}</p>
-                <p>threats: {{s.THREATS}}</p>
+                <p>strengths: {{s.strengths}}</p> 
+                <p>weaknesses: {{s.weaknesses}}</p>
+                <p>opportunities: {{s.opportunities}}</p>
+                <p>threats: {{s.threats}}</p>
               </td>
-              <td>{{s.OWNER}}</td>
-              <td>{{s.DATEUPDATED | date}}</td>
+              <td>{{s.owner}}</td>
+              <td>{{s.dateupdated | date}}</td>
             </tr>
           </table>
         </div>

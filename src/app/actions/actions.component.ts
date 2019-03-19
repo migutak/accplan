@@ -50,10 +50,10 @@ export class ActionsComponent implements OnInit {
   };
 
   constructor(private accplanService: AccplanService, private httpClient: HttpClient) {
-    this.minDate = new Date();
-    this.maxDate = new Date();
-    this.minDate.setDate(this.minDate.getDate());
-    this.maxDate.setDate(this.maxDate.getDate() + 7);
+    // this.minDate = new Date();
+    // this.maxDate = new Date();
+    // this.minDate.setDate(this.minDate.getDate());
+    // this.maxDate.setDate(this.maxDate.getDate() + 7);
   }
 
   fileuploaded = {
@@ -80,10 +80,10 @@ export class ActionsComponent implements OnInit {
 
   getproposal() {
     // tslint:disable-next-line:max-line-length
-    this.httpClient.get(environment.ecol_apis_host + '/api/plan_actions?filter[where][actionagreed]=PROPOSAL-RECEIVED&filter[where][custnumber]=' + cust).subscribe(data => {
+    this.httpClient.get(environment.ecol_apis_host + '/api/plan_actions?filter[where][actionagreed]=proposal-received&filter[where][custnumber]=' + cust).subscribe(data => {
       this.dataproposal = data;
       if (this.dataproposal.length > 0) {
-        this.model.initiationdateProposal = this.dataproposal[0].INITIATIONDATE;
+        this.model.initiationdateProposal = this.dataproposal[0].initiationdate;
         this.model.reviewProposal = this.dataproposal[0].NEXTREVIEW;
         this.model.remarkproposalremark = this.dataproposal[0].RCOMMENT;
         this.model.inititationcompleted = this.dataproposal[0].COMPLETED;
@@ -103,13 +103,13 @@ export class ActionsComponent implements OnInit {
 
   fetchinternalapprovals() {
     // tslint:disable-next-line:max-line-length
-    this.httpClient.get(environment.ecol_apis_host + '/api/plan_actions?filter[where][actionagreed]=INTERNAL-APPROVAL&filter?[where][custnumber]=' + cust).subscribe(data => {
+    this.httpClient.get(environment.ecol_apis_host + '/api/plan_actions?filter[where][actionagreed]=internal-approvals&filter?[where][custnumber]=' + cust).subscribe(data => {
       this.dataproposal = data;
       if (this.dataproposal.length > 0) {
-        this.model.initiationdateapprovalsort = this.dataproposal[0].INITIATIONDATE;
-        this.model.reviewedinternalApprovalSort = this.dataproposal[0].NEXTREVIEW;
-        this.model.remarkapprovalsought = this.dataproposal[0].RCOMMENT;
-        this.model.actioncompletedapprovalsought = this.dataproposal[0].COMPLETED;
+        this.model.initiationdateapprovalsort = this.dataproposal[0].initiationdate;
+        this.model.reviewedinternalApprovalSort = this.dataproposal[0].nextreview;
+        this.model.remarkapprovalsought = this.dataproposal[0].rcomment;
+        this.model.actioncompletedapprovalsought = this.dataproposal[0].completed;
 
         //
         if (this.model.actioncompletedapprovalsought === 'Approved') {
@@ -133,13 +133,13 @@ export class ActionsComponent implements OnInit {
 
   fetchcustaccept() {
     // tslint:disable-next-line:max-line-length
-    this.httpClient.get(environment.ecol_apis_host + '/api/plan_actions?filter[where][actionagreed]=CUST-ACCEPT&filter[where][custnumber]=' + cust).subscribe(data => {
+    this.httpClient.get(environment.ecol_apis_host + '/api/plan_actions?filter[where][actionagreed]=cust-accept&filter[where][custnumber]=' + cust).subscribe(data => {
       this.dataproposal = data;
       if (this.dataproposal.length > 0) {
-        this.model.initiationdatecustomeraccepted = this.dataproposal[0].INITIATIONDATE;
-        this.model.reviewedinternalcustomeraccepted = this.dataproposal[0].NEXTREVIEW;
-        this.model.remarkcustomeraccepted = this.dataproposal[0].RCOMMENT;
-        this.model.action_completed_customeraccepted = this.dataproposal[0].COMPLETED;
+        this.model.initiationdatecustomeraccepted = this.dataproposal[0].initiationdate;
+        this.model.reviewedinternalcustomeraccepted = this.dataproposal[0].nextreview;
+        this.model.remarkcustomeraccepted = this.dataproposal[0].rcomment;
+        this.model.action_completed_customeraccepted = this.dataproposal[0].completed;
 
         //
         if (this.model.action_completed_customeraccepted === 'Accepted') {
@@ -161,13 +161,13 @@ export class ActionsComponent implements OnInit {
 
   fetchcure() {
     // tslint:disable-next-line:max-line-length
-    this.httpClient.get(environment.ecol_apis_host + '/api/plan_actions?filter[where][actionagreed]=CURE-IMPLEMENTED&filter[where][custnumber]=' + cust).subscribe(data => {
+    this.httpClient.get(environment.ecol_apis_host + '/api/plan_actions?filter[where][actionagreed]=cure-implemented&filter[where][custnumber]=' + cust).subscribe(data => {
       this.dataproposal = data;
       if (this.dataproposal.length > 0) {
-        this.model.initiationdatecure = this.dataproposal[0].INITIATIONDATE;
-        this.model.reviewedcure = this.dataproposal[0].NEXTREVIEW;
-        this.model.remarkcure = this.dataproposal[0].RCOMMENT;
-        this.model.action_completed_cure = this.dataproposal[0].COMPLETED;
+        this.model.initiationdatecure = this.dataproposal[0].initiationdate;
+        this.model.reviewedcure = this.dataproposal[0].nextreview;
+        this.model.remarkcure = this.dataproposal[0].rcomment;
+        this.model.action_completed_cure = this.dataproposal[0].completed;
 
         //
 
@@ -190,7 +190,7 @@ export class ActionsComponent implements OnInit {
       if (response) {
         const filereceived = JSON.parse(response);
         this.fileuploaded.filename = filereceived.file.originalname;
-        this.fileuploaded.destpath = environment.fileLocation + filereceived.file.path;
+        this.fileuploaded.destpath = filereceived.file.path;
         this.fileuploaded.filesize = filereceived.file.size;
         this.fileuploaded.custnumber = cust;
         this.fileuploaded.accnumber = acc;

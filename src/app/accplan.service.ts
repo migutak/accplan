@@ -11,11 +11,6 @@ export class AccplanService {
   constructor(private httpClient: HttpClient) { }
 
   loader() {
-    /*swal({
-      title: 'Processing...',
-      text: 'Please wait',
-      closeOnClickOutside: false
-    });*/
 
     swal2({
       title: 'Processing ...',
@@ -45,7 +40,7 @@ export class AccplanService {
   }
 
   submitCustomerproposal(body) {
-    return this.httpClient.post(environment.ecol_apis_host + '/api/plan_customerproposal', body);
+    return this.httpClient.post(environment.ecol_apis_host + '/api/plan_customerproposals', body);
   }
 
   submitAbilitytopay(body) {
@@ -89,7 +84,7 @@ export class AccplanService {
 
   getPtps(custnumber) {
     // tslint:disable-next-line:max-line-length
-    return this.httpClient.get(environment.ecol_apis_host + '/api/plan_ptpplans?filter[where][custnumber]==' + custnumber + '&filter[where][deleted]=N&filter[order]=DATEUPDATED DESC');
+    return this.httpClient.get(environment.ecol_apis_host + '/api/plan_ptpplans?filter[where][custnumber]=' + custnumber + '&filter[where][deleted]=N&filter[order]=DATEUPDATED DESC');
   }
 
   getRemedialofferings(custnumber) {
@@ -102,7 +97,7 @@ export class AccplanService {
   }
 
   getCardwithid (nationid) {
-    return this.httpClient.get(environment.ecol_apis_host + '/api/cards_stage?filter[where][idnumber]=' + nationid);
+    return this.httpClient.get(environment.ecol_apis_host + '/api/cards_stage?filter[where][nationid]=' + nationid);
   }
 
   getMcoopwithid (nationid) {
@@ -121,6 +116,6 @@ export class AccplanService {
   // actions
   submitInitiation(body) {
     console.log('data to save', body);
-    return this.httpClient.post(environment.uploadurl + '/api/initiation', body);
+    return this.httpClient.post(environment.ecol_apis_host + '/api/plan_actions', body);
   }
 }

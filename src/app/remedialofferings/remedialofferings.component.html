@@ -1,12 +1,12 @@
 <div class="panel panel-info">
     <div class="panel-heading">
-        <h3 class="panel-title">Ability to pay</h3>
+        <h3 class="panel-title">Remedial offerings</h3>
     </div>
     <div class="panel-body" style="height:500px">
         <div class="col-sm-6">
             <form #remedialofferingsForm="ngForm" (ngSubmit)="onSubmit(remedialofferingsForm)">
                 <div class="form-group col-md-12">
-                    <label for="remedialofferings">ability to pay</label>
+                    <label for="remedialofferings">remedial offerings</label>
                     <select id="remedialofferings" class="form-control" name="remedialofferings" id="remedialofferings" #remedialofferings="ngModel"
                         [(ngModel)]="model.remedialofferings" (change)="onChange($event.target.value)" required>
                         <option>Private Treaty Sale</option>
@@ -23,9 +23,10 @@
                         <option>Write off</option>
                         <option>Restructure</option>
                         <option>Refinancing</option>
+                        <option>PE Fund</option>
                         <option>Other</option>
                     </select>
-                    <div class="validation-error" *ngIf="remedialofferings.invalid && remedialofferings.touched">ability to pay is required</div>
+                    <div class="validation-error" *ngIf="remedialofferings.invalid && remedialofferings.touched">remedial offerings is required</div>
                 </div>
                 <!---->
                 <div class="form-row">
@@ -52,9 +53,9 @@
                 <div class="tab-pane active" id="tab_default_ability1">
                     <table class="table table-sm table-hover">
                         <tr *ngFor="let a of remedialofferingshis">
-                            <td>{{a.REMEDIALOFFERINGS}}</td>
-                            <td>{{a.OWNER}}</td>
-                            <td>{{a.DATEUPDATED | date}}</td>
+                            <td>{{a.remedialofferings}}</td>
+                            <td>{{a.owner}}</td>
+                            <td>{{a.dateupdated | date}}</td>
                         </tr>
                     </table>
                 </div>
